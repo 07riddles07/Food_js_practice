@@ -105,11 +105,11 @@ document.addEventListener('DOMContentLoaded', () => {
         modal = document.querySelector('.modal'),
         modalClosebtn = document.querySelector('[data-close]');
 
-        function openModalWindow() {
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-            clearInterval(openModalWindow);
-        }
+    function openModalWindow() {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        clearInterval(openModalWindow);
+    }
 
     modalTrigger.forEach(btn => {
         btn.addEventListener('click', openModalWindow);
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('keydown', (e) => {
-        if(e.code === 'Escape' && modal.classList.contains('show')) {
+        if (e.code === 'Escape' && modal.classList.contains('show')) {
             closeModalWindow();
         }
     });
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // const ModalTimerId = setTimeout(openModalWindow, 23000);
 
     function showModalWindowByScrolling() {
-        if(window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight - 1) {
+        if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight - 1) {
             openModalWindow();
             window.removeEventListener('scroll', showModalWindowByScrolling);
         }
@@ -154,17 +154,17 @@ document.addEventListener('DOMContentLoaded', () => {
             this.title = title;
             this.descr = descr;
             this.price = price;
-            this.parentSelector = document.querySelector(parentSelector);
+            this.parent = document.querySelector(parentSelector);
             this.convertCurrency = 63;
-            this.converttoRub();
+            this.convertToRub();
         }
 
-        converttoRub() {
+        convertToRub() {
             this.price = this.price * this.convertCurrency;
         }
 
         render() {
-            const div = document.createElement('div');
+            const element = document.createElement('div');
             element.innerHTML = `<div class="menu__item">
         <img src="${this.src}" alt="${this.alt}">
         <h3 class="menu__item-subtitle">${this.title}</h3>
